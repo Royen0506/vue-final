@@ -3,7 +3,7 @@
     <div class="row">
       <aside
         data-aos="fade-right"
-        style="height: 100vh"
+        style="height: 100dvh"
         class="col-4 col-lg-2 bg-dark d-flex flex-column align-items-center px-0 py-3"
       >
         <div class="h3 text-white">這是標題</div>
