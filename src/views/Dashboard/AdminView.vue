@@ -1,11 +1,18 @@
 <template>
-  <div class="container-fluid ps-0">
-    <div class="row">
+  <div class="container-fluid p-0">
+    <div class="d-flex">
       <aside
+        v-if="isShowSideBar"
         data-aos="fade-right"
-        style="height: 100dvh"
-        class="col-4 col-lg-2 bg-dark d-flex flex-column align-items-center px-0 py-3"
+        style="height: 100dvh; width: 30dvh"
+        class="bg-primary d-flex flex-column align-items-center px-0 pb-3"
       >
+        <button
+          @click="isShowSideBar = false"
+          class="btn btn-primary text-white align-self-end"
+        >
+          X
+        </button>
         <div class="h3 text-white">這是標題</div>
         <router-link
           to="/dashboard/products"
@@ -31,8 +38,28 @@
           >登出</a
         >
       </aside>
-      <div class="col-8 col-lg-10">
-        <router-view></router-view>
+      <div v-else>
+        <button
+          class="btn btn-primary text-white rounded-0"
+          @click="isShowSideBar = true"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-list"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="w-100">
+        <router-view class="mx-auto"></router-view>
       </div>
     </div>
   </div>
