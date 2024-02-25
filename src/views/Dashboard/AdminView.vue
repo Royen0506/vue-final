@@ -40,7 +40,7 @@
       </aside>
       <div v-else>
         <button
-          class="btn btn-primary text-white rounded-0"
+          class="btn btn-primary text-white rounded-bottom-4 rounded-top-0 rounded-start-0"
           @click="isShowSideBar = true"
         >
           <svg
@@ -58,8 +58,10 @@
           </svg>
         </button>
       </div>
-      <div class="w-100">
-        <router-view class="mx-auto"></router-view>
+      <div class="w-100 position-relative mt-4">
+        <router-view
+          class="position-absolute top-0 start-50 translate-middle-x"
+        ></router-view>
       </div>
     </div>
   </div>
