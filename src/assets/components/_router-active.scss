@@ -1,0 +1,16 @@
+.router-active {
+    color: $white ;
+
+    transition: all 0.2s ease-in-out;
+
+    &.active {
+        color: yellow;
+    }
+
+
+
+}
+
+.router-active:hover {
+    color: yellow;
+}

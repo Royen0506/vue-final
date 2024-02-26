@@ -4,8 +4,8 @@
       <aside
         v-if="isShowSideBar"
         data-aos="fade-right"
-        style="height: 100dvh; width: 30dvh"
-        class="bg-primary d-flex flex-column align-items-center px-0 pb-3"
+        style="height: 100dvh; width: 33dvh"
+        class="bg-primary d-flex flex-column align-items-center px-0 pb-3 fixed-top"
       >
         <button
           @click="isShowSideBar = false"
@@ -24,33 +24,33 @@
             />
           </svg>
         </button>
-        <div class="h3 text-white text-nowrap kalam-bold">CaMPiNg LiFe</div>
+        <div class="h3 text-white kalam-bold">CaMPiNg LiFe</div>
         <router-link
           to="/dashboard/products"
-          class="my-2 text-white link-underline link-underline-opacity-0 px-4"
+          class="my-2 link-underline link-underline-opacity-0 px-4 router-active"
           >產品管理</router-link
         >
         <router-link
           to="/dashboard/orders"
-          class="my-2 text-white link-underline link-underline-opacity-0 px-4"
+          class="my-2 link-underline link-underline-opacity-0 px-4 router-active"
           >訂單管理</router-link
         >
         <router-link
           to="/dashboard/coupons"
-          class="my-2 text-white link-underline link-underline-opacity-0 px-4"
+          class="my-2 link-underline link-underline-opacity-0 px-4 router-active"
           >優惠卷管理</router-link
         >
         <router-link
           to="/dashboard/news"
-          class="my-2 text-white link-underline link-underline-opacity-0 px-4"
+          class="my-2 link-underline link-underline-opacity-0 px-4 router-active"
           >最新消息管理</router-link
         >
         <a
-          class="text-white link-underline link-underline-opacity-0 px-4 mt-auto"
+          class="link-underline link-underline-opacity-0 px-4 mt-auto router-active"
           >登出</a
         >
       </aside>
-      <div v-else>
+      <div class="fixed-top" v-else>
         <button
           class="btn btn-primary text-white rounded-bottom-3 rounded-top-0 rounded-start-0"
           @click="isShowSideBar = true"
@@ -70,10 +70,8 @@
           </svg>
         </button>
       </div>
-      <div class="w-100 position-relative mt-4">
-        <router-view
-          class="position-absolute top-0 start-50 translate-middle-x"
-        ></router-view>
+      <div class="mt-4 w-100">
+        <router-view></router-view>
       </div>
     </div>
   </div>
@@ -85,11 +83,7 @@ export default {
     return {
       isShowSideBar: true
     }
-  },
-
-  mounted() {},
-
-  methods: {}
+  }
 }
 </script>
 

@@ -1,6 +1,13 @@
 @import "bootstrap/scss/functions";
 @import "helpers/variables.scss";
 @import "bootstrap/scss/bootstrap";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/root";
+@import "helpers/utilities.scss";
 
-//components
-@import"./utilities/title-fonts"
+//cus components
+@import"./components/router-active";
+
+//cus utilities
+@import"./utilities/title-fonts";
