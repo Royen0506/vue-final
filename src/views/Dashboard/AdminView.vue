@@ -9,44 +9,56 @@
       >
         <button
           @click="isShowSideBar = false"
-          class="btn btn-primary text-white align-self-end"
+          class="btn btn-primary text-white align-self-end rounded-0"
         >
-          X
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="25"
+            height="25"
+            fill="currentColor"
+            class="bi bi-x-lg"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"
+            />
+          </svg>
         </button>
-        <div class="h3 text-white">這是標題</div>
+        <div class="h3 text-white text-nowrap kalam-bold">CaMPiNg LiFe</div>
         <router-link
           to="/dashboard/products"
-          class="my-2 text-white link-underline link-underline-opacity-0"
+          class="my-2 text-white link-underline link-underline-opacity-0 px-4"
           >產品管理</router-link
         >
         <router-link
           to="/dashboard/orders"
-          class="my-2 text-white link-underline link-underline-opacity-0"
+          class="my-2 text-white link-underline link-underline-opacity-0 px-4"
           >訂單管理</router-link
         >
         <router-link
           to="/dashboard/coupons"
-          class="my-2 text-white link-underline link-underline-opacity-0"
+          class="my-2 text-white link-underline link-underline-opacity-0 px-4"
           >優惠卷管理</router-link
         >
         <router-link
           to="/dashboard/news"
-          class="my-2 text-white link-underline link-underline-opacity-0"
+          class="my-2 text-white link-underline link-underline-opacity-0 px-4"
           >最新消息管理</router-link
         >
-        <a class="text-white link-underline link-underline-opacity-0 mt-auto"
+        <a
+          class="text-white link-underline link-underline-opacity-0 px-4 mt-auto"
           >登出</a
         >
       </aside>
       <div v-else>
         <button
-          class="btn btn-primary text-white rounded-bottom-4 rounded-top-0 rounded-start-0"
+          class="btn btn-primary text-white rounded-bottom-3 rounded-top-0 rounded-start-0"
           @click="isShowSideBar = true"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
+            width="25"
+            height="25"
             fill="currentColor"
             class="bi bi-list"
             viewBox="0 0 16 16"

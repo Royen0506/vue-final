@@ -1,5 +1,5 @@
 <template>
-  <div class="h3 mb-0 text-center">這是產品列表</div>
+  <div class="h3 mb-0 text-center">產品管理</div>
   <div class="container">
     <div class="row">
       <p class="text-center">
