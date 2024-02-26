@@ -5,13 +5,10 @@
       height: 100dvh;
       background-position: center center;
       background-size: cover;
-      background-color: #121212;
+      background-image: url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
     "
   >
     <VueLoading :active="isLoading"><div class="loader"></div> </VueLoading>
-    <spline-viewer
-      url="https://prod.spline.design/46p25RXMaZppKJGr/scene.splinecode"
-    ></spline-viewer>
     <div class="container">
       <div class="row">
         <form
@@ -27,7 +24,7 @@
             <div class="shake-vertical">P</div>
             <div class="shake-vertical-mid">i</div>
             <div class="shake-vertical-quick">n</div>
-            <div class="shake-vertical">g</div>
+            <div class="shake-vertical me-2">g</div>
             <div class="shake-vertical-quick">L</div>
             <div class="shake-vertical">i</div>
             <div class="shake-vertical-mid">F</div>
