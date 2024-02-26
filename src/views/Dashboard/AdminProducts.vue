@@ -1,8 +1,8 @@
 <template>
-  <div class="h3 mb-0 text-center">產品管理</div>
-  <VueLoading :active="isLoading" />
+  <VueLoading :active="isLoading"><div class="loader"></div> </VueLoading>
   <div class="container">
     <div class="row">
+      <div class="h3 mb-0 text-center">產品管理</div>
       <!-- <ModalComponent
         @emit-modal="getBsModal"
         :modal-txt="modalTxt"

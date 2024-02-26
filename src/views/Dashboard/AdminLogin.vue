@@ -1,13 +1,17 @@
 <template>
   <div
     style="
-      background-image: url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
       width: 100%;
       height: 100dvh;
       background-position: center center;
       background-size: cover;
+      background-color: #121212;
     "
   >
+    <VueLoading :active="isLoading"><div class="loader"></div> </VueLoading>
+    <spline-viewer
+      url="https://prod.spline.design/46p25RXMaZppKJGr/scene.splinecode"
+    ></spline-viewer>
     <div class="container">
       <div class="row">
         <form
@@ -37,7 +41,7 @@
             >
             <input
               type="email"
-              class="form-control mt-1"
+              class="form-control mt-1 kalam-regular"
               id="username"
               placeholder="name@example.com"
               required
@@ -51,7 +55,7 @@
             >
             <input
               type="password"
-              class="form-control mt-1"
+              class="form-control mt-1 kalam-regular"
               id="password"
               placeholder="Password"
               required
@@ -82,14 +86,18 @@ export default {
   data() {
     return {
       password: '',
-      username: ''
+      username: '',
+      isLoading: true
     }
   },
 
-  mounted() {},
+  mounted() {
+    this.isLoading = false
+  },
 
   methods: {
     signIn() {
+      this.isLoading = true
       const obj = {
         username: this.username,
         password: this.password
@@ -100,11 +108,13 @@ export default {
         .then((res) => {
           const { token, expired } = res.data
           document.cookie = `myToken=${token}; expires=${expired};`
+          this.isLoading = false
           alert(res.data.message)
           this.$router.push('/dashboard/products')
         })
         .catch((err) => {
           alert(err.response.data.message)
+          this.isLoading = false
         })
     }
   }

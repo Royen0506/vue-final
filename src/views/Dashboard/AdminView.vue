@@ -45,7 +45,7 @@
           class="my-2 link-underline link-underline-opacity-0 px-4 router-active"
           >最新消息管理</router-link
         >
-        <div class="border-top border-2 w-100 text-center mt-auto py-2">
+        <div class="border-top border-1 w-100 text-center mt-auto py-2">
           <a class="link-underline link-underline-opacity-0 px-4 router-active"
             >登出</a
           >
