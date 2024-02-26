@@ -5,7 +5,7 @@
         v-if="isShowSideBar"
         data-aos="fade-right"
         style="height: 100dvh; width: 33dvh"
-        class="bg-primary d-flex flex-column align-items-center px-0 pb-3 fixed-top"
+        class="bg-primary d-flex flex-column align-items-center px-0 fixed-top"
       >
         <button
           @click="isShowSideBar = false"
@@ -45,10 +45,11 @@
           class="my-2 link-underline link-underline-opacity-0 px-4 router-active"
           >最新消息管理</router-link
         >
-        <a
-          class="link-underline link-underline-opacity-0 px-4 mt-auto router-active"
-          >登出</a
-        >
+        <div class="border-top border-2 w-100 text-center mt-auto py-2">
+          <a class="link-underline link-underline-opacity-0 px-4 router-active"
+            >登出</a
+          >
+        </div>
       </aside>
       <div class="fixed-top" v-else>
         <button
@@ -81,7 +82,49 @@
 export default {
   data() {
     return {
-      isShowSideBar: true
+      isShowSideBar: false,
+      isCheck: false,
+      isLoading: false
+    }
+  },
+
+  mounted() {
+    this.isLoading = true
+
+    this.checkUserInfo()
+  },
+
+  methods: {
+    resetToken() {
+      this.isLoading = true
+      document.cookie = 'myToken=""'
+      setTimeout(() => {
+        alert('將跳轉至登入頁面')
+        this.isLoading = false
+        this.$router.push('/AdminLogin')
+      }, 1000)
+    },
+
+    checkUserInfo() {
+      const token = document.cookie.replace(
+        /(?:(?:^|.*;\s*)myToken\s*=\s*([^;]*).*$)|^.*$/,
+        '$1'
+      )
+      this.$http.defaults.headers.common.Authorization = token
+      const { VITE_APP_API_URL } = import.meta.env
+      this.$http
+        .post(`${VITE_APP_API_URL}/v2/api/user/check`, token)
+        .then((res) => {
+          this.isCheck = true
+          this.isLoading = false
+        })
+        .catch((err) => {
+          alert(`${err.response.data.message}，將跳轉至登入頁面`)
+          this.isLoading = true
+          setTimeout(() => {
+            this.$router.push('/AdminLogin')
+          }, 1000)
+        })
     }
   }
 }
