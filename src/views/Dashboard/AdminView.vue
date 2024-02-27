@@ -5,7 +5,7 @@
         v-if="isShowSideBar"
         data-aos="fade-right"
         style="height: 100dvh; width: 33dvh"
-        class="bg-primary d-flex flex-column align-items-center px-0 fixed-top"
+        class="bg-primary d-flex flex-column align-items-center px-0 fixed-top shadow-sm"
       >
         <button
           @click="isShowSideBar = false"
@@ -53,7 +53,7 @@
       </aside>
       <div class="fixed-top" v-else>
         <button
-          class="btn btn-primary text-white rounded-bottom-3 rounded-top-0 rounded-start-0"
+          class="btn btn-primary text-white rounded-bottom-4 rounded-top-0 rounded-start-0 shadow-sm"
           @click="isShowSideBar = true"
         >
           <svg
@@ -72,7 +72,7 @@
         </button>
       </div>
       <div class="mt-4 w-100">
-        <router-view></router-view>
+        <router-view @emit-side-bar-status="changeSideBarStatus"></router-view>
       </div>
     </div>
   </div>
@@ -125,13 +125,11 @@ export default {
             this.$router.push('/AdminLogin')
           }, 1000)
         })
+    },
+
+    changeSideBarStatus() {
+      this.isShowSideBar = false
     }
   }
 }
 </script>
-
-<style lang="scss">
-.aside {
-  transition: all 0.3s ease-in-out;
-}
-</style>

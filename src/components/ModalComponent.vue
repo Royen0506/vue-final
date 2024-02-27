@@ -68,7 +68,7 @@ export default {
       const { VITE_APP_API_URL, VITE_APP_API_PATH } = import.meta.env
       this.$http
         .delete(
-          `${VITE_API_URL}/v2/api/${VITE_API_PATH}/admin/product/${this.itemId}`
+          `${VITE_APP_API_URL}/v2/api/${VITE_APP_API_PATH}/admin/product/${this.itemId}`
         )
         .then((res) => {
           this.emitGetProduct()

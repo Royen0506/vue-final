@@ -4,7 +4,7 @@
     transition: all 0.2s ease-in-out;
 
     &.active {
-        color: #C5E199;
+        color: $secondary;
     }
 
 
@@ -12,5 +12,5 @@
 }
 
 .router-active:hover {
-    color: #C5E199;
+    color: $secondary;
 }

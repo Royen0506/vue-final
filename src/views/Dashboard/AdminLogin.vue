@@ -33,9 +33,7 @@
 
           <div class="h5 text-center">管理員登入</div>
           <div class="form mb-3 w-75 text-start mx-auto">
-            <label for="username"
-              >電子郵件 / <span class="kalam-regular">Email</span></label
-            >
+            <label for="username">電子郵件 / Email</label>
             <input
               type="email"
               class="form-control mt-1 kalam-regular"
@@ -47,9 +45,7 @@
             />
           </div>
           <div class="form w-75 text-start mx-auto">
-            <label for="password"
-              >密碼 / <span class="kalam-regular">Password</span></label
-            >
+            <label for="password">密碼 / Password</label>
             <input
               type="password"
               class="form-control mt-1 kalam-regular"
