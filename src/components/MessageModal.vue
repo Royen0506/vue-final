@@ -14,28 +14,39 @@
           ></button>
         </div>
         <div class="modal-body">
-          <p v-if="!isAdminDeleteProduct" class="mb-0">{{ modalTxt }}</p>
-          <p v-else class="mb-0">
+          <p v-if="isAdminDeleteProduct" class="mb-0">
             確認是否將
             <span class="fw-bold">{{ modalTxt }}</span> 從產品列中移除
           </p>
+          <p v-else-if="isAdminDeleteOrder">
+            確認是否將訂單編號：{{ modalTxt }}刪除
+          </p>
+          <p v-else-if="isDeleteAllOrders">{{ modalTxt }}</p>
+          <p v-else class="mb-0">{{ modalTxt }}</p>
         </div>
         <div class="modal-footer">
           <button
-            v-if="!isAdminDeleteProduct"
-            data-bs-dismiss="modal"
-            type="button"
-            class="btn btn-primary"
-          >
-            確認
-          </button>
-          <button
             @click.prevent="deleteProduct"
-            v-else
+            v-if="isAdminDeleteProduct"
             type="button"
             class="btn btn-outline-primary"
           >
             確認刪除
+          </button>
+          <button
+            class="btn btn-primary text-white"
+            v-else-if="isAdminDeleteOrder"
+            @click="confirmDeleteOrder"
+          >
+            確認刪除
+          </button>
+          <button
+            v-else
+            data-bs-dismiss="modal"
+            type="button"
+            class="btn btn-primary text-white"
+          >
+            確認
           </button>
         </div>
       </div>
@@ -52,7 +63,13 @@ export default {
     }
   },
 
-  props: ['modalTxt', 'isAdminDeleteProduct', 'itemId'],
+  props: [
+    'modalTxt',
+    'isAdminDeleteProduct',
+    'itemId',
+    'isAdminDeleteOrder',
+    'isDeleteAllOrders'
+  ],
 
   mounted() {
     this.modal = new Modal(this.$refs.Modal, {
@@ -81,6 +98,10 @@ export default {
 
     emitGetProduct() {
       this.$emit('emit-get-product')
+    },
+
+    confirmDeleteOrder() {
+      this.$emit('confirm-delete-order')
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <VueLoading :active="isLoading"><div class="loader"></div> </VueLoading>
-  <div class="container">
+  <div class="container" data-aos="fade-down">
     <div class="row">
       <ModalComponent
         @emit-modal="getBsModal"
@@ -43,11 +43,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="item in product" :key="item.id">
+            <tr v-for="item in products" :key="item.id">
               <td>{{ item.category }}</td>
               <td>{{ item.title }}</td>
-              <td class="text-end">{{ item.origin_price }}</td>
-              <td class="text-end">{{ item.price }}</td>
+              <td class="text-end">{{ numberComma(item.origin_price) }}</td>
+              <td class="text-end">{{ numberComma(item.price) }}</td>
               <td>
                 <span v-if="item.is_enabled == 1" class="text-success"
                   >啟用</span
@@ -311,13 +311,13 @@
 
 <script>
 import Pagination from '@/components/PaginationComponent.vue'
-import ModalComponent from '@/components/ModalComponent.vue'
+import ModalComponent from '@/components/MessageModal.vue'
 import Modal from 'bootstrap/js/dist/modal.js'
 
 export default {
   data() {
     return {
-      product: [],
+      products: [],
       pagination: {},
       isLoading: true,
       bsModal: null,
@@ -356,7 +356,7 @@ export default {
           `${VITE_APP_API_URL}/v2/api/${VITE_APP_API_PATH}/admin/products?page=${num}`
         )
         .then((res) => {
-          this.product = res.data.products
+          this.products = res.data.products
           this.pagination = res.data.pagination
           this.closeEditComponent()
           this.isLoading = false
@@ -450,6 +450,11 @@ export default {
 
     emitSideBarStatus() {
       this.$emit('emitSideBarStatus')
+    },
+
+    numberComma(num) {
+      const comma = /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g
+      return num.toString().replace(comma, ',')
     }
   }
 }
